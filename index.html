@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusRide | Campus Ride Matching</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">C</span> CampusRide</a>
+    <nav>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#offer">Offer a ride</a>
+      <a href="#request">Find a ride</a>
+      <a href="#bookings">My bookings</a>
+    </nav>
+    <a class="nav-cta" href="#register">Get started <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="dashboard">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> YOUR CAMPUS, CONNECTED</div>
+        <h1>Good journeys<br>start <span>together.</span></h1>
+        <p>Share your route. Split the journey. Make campus travel simpler with rides from your student and staff community.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#request">Find a ride <span>→</span></a>
+          <a class="button secondary" href="#offer">Offer a ride</a>
+        </div>
+        <div class="trust-row"><span class="avatar-stack"><i>H</i><i>A</i><i>S</i></span><span>Built for your campus community</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-glow"></div>
+        <div class="route-card">
+          <div class="route-head"><span class="mini-label">TODAY'S ROUTE</span><span class="live-tag"><span></span> LIVE MATCHING</span></div>
+          <div class="route-path">
+            <div class="route-point"><span class="pin start"></span><div><small>PICKUP</small><strong>Campus Main Gate</strong></div><time>08:30</time></div>
+            <div class="route-line"></div>
+            <div class="route-point"><span class="pin end"></span><div><small>DESTINATION</small><strong>Pollachi Bus Stand</strong></div><time>08:50</time></div>
+          </div>
+          <div class="ride-driver"><div class="driver-avatar">R</div><div class="driver-details"><strong>Ride matching made easy</strong><span>Check seats before booking</span></div><div class="car-icon">🚘</div></div>
+        </div>
+        <div class="floating-note"><span class="check-icon">✓</span><div><strong>Smart matching</strong><small>Route + seats + time</small></div></div>
+        <div class="decor-dot dot-one"></div><div class="decor-dot dot-two"></div>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <div class="stat"><span class="stat-icon">↗</span><div><strong id="statRides">0</strong><span>Rides offered</span></div></div>
+      <div class="stat"><span class="stat-icon">⌁</span><div><strong id="statSeats">0</strong><span>Seats available</span></div></div>
+      <div class="stat"><span class="stat-icon">✓</span><div><strong id="statMatched">0</strong><span>Matched bookings</span></div></div>
+      <div class="stat"><span class="stat-icon">◷</span><div><strong id="statPending">0</strong><span>Pending requests</span></div></div>
+    </section>
+
+    <section class="section" id="register">
+      <div class="section-heading"><div><span class="eyebrow">JOIN THE COMMUNITY</span><h2>Get started</h2><p>Register as a driver or passenger to use CampusRide.</p></div></div>
+      <form id="registerForm" class="form-card form-grid">
+        <label>Full name<input name="name" placeholder="e.g. Hema Latha" required></label>
+        <label>Role<select name="role" required><option value="passenger">Passenger</option><option value="driver">Driver</option></select></label>
+        <label class="full">Contact detail<input name="contact" placeholder="Email or phone number" required></label>
+        <button class="button primary" type="submit">Create account <span>→</span></button>
+        <p class="form-message full" id="registerMessage"></p>
+      </form>
+    </section>
+
+    <section class="section split-section" id="offer">
+      <div class="section-heading"><div><span class="eyebrow">FOR DRIVERS</span><h2>Offer a ride</h2><p>Share your trip details and let compatible passengers find you.</p></div></div>
+      <form id="offerForm" class="form-card form-grid">
+        <label>Registered driver name<input name="driver" placeholder="Name used during registration" required></label>
+        <label>Vehicle type<select name="vehicleType"><option>Car</option><option>Van</option><option>Bike</option><option>Other</option></select></label>
+        <label>Vehicle details<input name="vehicle" placeholder="e.g. Blue hatchback" required></label>
+        <label>Available seats<input name="seats" type="number" min="1" max="20" value="3" required></label>
+        <label>Pickup location<input name="pickup" placeholder="Campus main gate" required></label>
+        <label>Destination<input name="destination" placeholder="Pollachi bus stand" required></label>
+        <label class="full">Departure date and time<input name="departure" type="datetime-local" required></label>
+        <button class="button primary" type="submit">Publish ride <span>→</span></button>
+        <p class="form-message full" id="offerMessage"></p>
+      </form>
+    </section>
+
+    <section class="section split-section" id="request">
+      <div class="section-heading"><div><span class="eyebrow">FOR PASSENGERS</span><h2>Find your ride</h2><p>Enter your journey. CampusRide checks destinations, time and available seats.</p></div></div>
+      <form id="requestForm" class="form-card form-grid">
+        <label>Registered passenger name<input name="passenger" placeholder="Name used during registration" required></label>
+        <label>Seats needed<input name="seats" type="number" min="1" max="20" value="1" required></label>
+        <label>Pickup location<input name="pickup" placeholder="Campus main gate" required></label>
+        <label>Destination<input name="destination" placeholder="Pollachi bus stand" required></label>
+        <label class="full">Preferred departure date and time<input name="departure" type="datetime-local" required></label>
+        <button class="button primary" type="submit">Find a match <span>→</span></button>
+        <p class="form-message full" id="requestMessage"></p>
+      </form>
+    </section>
+
+    <section class="section" id="rides">
+      <div class="section-heading row-heading"><div><span class="eyebrow">AVAILABLE JOURNEYS</span><h2>Ride board</h2><p>Live ride details and remaining seat counts.</p></div><button class="button secondary small" id="refreshRides" type="button">↻ Refresh</button></div>
+      <div id="rideList" class="ride-grid"><div class="empty-state">Loading rides…</div></div>
+    </section>
+
+    <section class="section" id="bookings">
+      <div class="section-heading row-heading"><div><span class="eyebrow">YOUR ACTIVITY</span><h2>Booking tracker</h2><p>Monitor pending requests and matched rides.</p></div><button class="button secondary small" id="refreshBookings" type="button">↻ Refresh</button></div>
+      <div class="table-wrap"><table><thead><tr><th>Booking</th><th>Passenger</th><th>Route</th><th>Seats</th><th>Ride</th><th>Status / action</th></tr></thead><tbody id="bookingRows"><tr><td colspan="6" class="empty-state">Loading bookings…</td></tr></tbody></table></div>
+    </section>
+
+    <section class="section settings-section">
+      <div><span class="eyebrow">MATCHING SETTINGS</span><h2>Flexible time matching</h2><p>Choose how many minutes apart two departure times may be.</p></div>
+      <form id="settingsForm" class="settings-form"><label>Time tolerance (minutes)<input type="number" name="tolerance" min="0" max="720" value="60" required></label><button class="button secondary" type="submit">Save setting</button></form>
+      <p class="form-message" id="settingsMessage"></p>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-icon">C</span> CampusRide</a><p>A student mini-project for smarter campus travel.</p><span>Core Java • HTML • CSS • JavaScript</span></footer>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
